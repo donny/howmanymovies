@@ -1,0 +1,23 @@
+!!!
+%html
+  %head
+    %title= @title
+    %link(rel="stylesheet" href="/style.css" type="text/css")
+ 
+  %body
+    #header
+      %h1= "How many movies directed by"
+ 
+    #content
+      %form{ :action => "/", :method => "post"}
+        %input{ :type => "text", :name => "name", :value => "#{@name}"}
+        %input{ :type => "submit", :value => "?" }
+
+    - if @films.length == 0
+      %h1= "None"
+    - else
+      %h1= "#{@films.length}"
+      - @films.each do |film|
+        %p= film
+
+    = haml :footer
